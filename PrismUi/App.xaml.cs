@@ -1,6 +1,9 @@
 ﻿using Prism.Ioc;
 using PrismUi.Views;
 using System.Windows;
+using System.Windows.Controls;
+using Prism.Regions;
+using PrismUi.Core.Region;
 
 namespace PrismUi
 {
@@ -17,6 +20,12 @@ namespace PrismUi
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
 
+        }
+
+        protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
+        {
+            base.ConfigureRegionAdapterMappings(regionAdapterMappings);
+            regionAdapterMappings.RegisterMapping(typeof(StackPanel), Container.Resolve<StackPanelRegionAdapter>());
         }
     }
 }
