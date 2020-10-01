@@ -6,6 +6,7 @@ using Prism.Modularity;
 using Prism.Regions;
 using PrismUi.Core.Region;
 using ModuleTest;
+using PrismUI.Core.Commands;
 
 namespace PrismUi
 {
@@ -21,7 +22,7 @@ namespace PrismUi
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
         }
 
         protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)

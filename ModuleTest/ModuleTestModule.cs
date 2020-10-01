@@ -33,8 +33,18 @@ namespace ModuleTest
             _regionManager.RegisterViewWithRegion("ContentRegion", typeof(TestView));
             
             IRegion region = _regionManager.Regions["SecondRegion"];
-            var secondView = containerProvider.Resolve<SecondView>();
-            region.Add(secondView);
+
+            var tabOne = containerProvider.Resolve<SecondView>();
+            (tabOne.DataContext as SecondViewModel).Title = "Tab 1.";
+            region.Add(tabOne);
+
+            var tabTwo = containerProvider.Resolve<SecondView>();
+            (tabTwo.DataContext as SecondViewModel).Title = "Tab 2.";
+            region.Add(tabTwo);
+
+            var tabThree = containerProvider.Resolve<SecondView>();
+            (tabThree.DataContext as SecondViewModel).Title = "Tab 3.";
+            region.Add(tabThree);
 
             //var thirdView = containerProvider.Resolve<TestView>();
             //thirdView.Content = new TextBlock()

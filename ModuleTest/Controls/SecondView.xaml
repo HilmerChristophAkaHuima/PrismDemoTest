@@ -8,7 +8,10 @@
              d:DesignHeight="450" d:DesignWidth="800"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid>
-        <TextBlock Text="{Binding Text}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" />
-    </Grid>
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Text="{Binding Title}" FontSize="18" Margin=" 5"/>
+        <CheckBox IsChecked="{Binding CanUpdate}" Content="Can Execute" Margin="5"/>
+        <Button Command="{Binding UpdateCommand}" Content="Save" Margin="5" /> 
+        <TextBlock Text="{Binding UpdateText}" Margin="5" />
+    </StackPanel>
 </UserControl>

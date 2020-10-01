@@ -10,5 +10,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModuleTest\ModuleTest.csproj" />
+    <ProjectReference Include="..\PrismUI.Core\PrismUI.Core.csproj" />
   </ItemGroup>
 </Project>
