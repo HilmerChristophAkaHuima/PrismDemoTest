@@ -24,8 +24,8 @@ namespace ModuleTest
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            //ViewModelLocationProvider.Register<SecondView, SecondViewModel>();
-            ViewModelLocationProvider.Register<SecondView>(() => new SecondViewModel() {Text = "Hello from SecondFactory"});
+            ViewModelLocationProvider.Register<SecondView, SecondViewModel>();
+            //ViewModelLocationProvider.Register<SecondView>(() => new SecondViewModel() {Text = "Hello from SecondFactory"});
         }
 
         public void OnInitialized(IContainerProvider containerProvider)
