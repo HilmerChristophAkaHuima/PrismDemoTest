@@ -16,25 +16,47 @@ namespace ModuleTest.ViewModels
             set => SetProperty(ref _title, value);
         }
 
+        private bool _canExecute = false;
+
+        public bool CanExecute
+        {
+            get => _canExecute;
+            set
+            {
+                SetProperty(ref _canExecute, value);
+
+                //ClickMeCommand.RaiseCanExecuteChanged();
+            }
+        }
+
         public int ClickCount { get; private set; }
 
         public DelegateCommand ClickMeCommand { get; set; }
 
         public TestViewModel()
         {
-            ClickMeCommand = new DelegateCommand(ClickMe, CanClick);
+            ClickMeCommand = new DelegateCommand(ClickMe)
+                //.ObservesProperty(() => CanExecute);
+                .ObservesCanExecute(() => CanExecute);
             ClickCount = 0;
         }
 
-        private bool CanClick()
-        {
-            return ClickCount < 10;
-        }
+        //Needed for ObservesProperty or RaisCanExecuteChanged
+        //private bool CanClick()
+        //{
+        //    return CanExecute;
+        //}
 
         private void ClickMe()
         {
+
             ClickCount++;
             Title = $"You clicked me {ClickCount} times.";
+            if (ClickCount > 9)
+            {
+                CanExecute = false;
+            }
+            
         }
     }
 }

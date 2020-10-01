@@ -11,5 +11,6 @@
     <StackPanel>
         <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" />
         <Button Command="{Binding ClickMeCommand}" Margin="50 10" MaxHeight="20" MaxWidth="100">Click Me</Button>
+        <CheckBox Content="Can Execute" IsChecked="{Binding CanExecute}" Margin="10" HorizontalAlignment="Center" />
     </StackPanel>
 </UserControl>
