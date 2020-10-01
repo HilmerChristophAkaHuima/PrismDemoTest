@@ -11,8 +11,8 @@ namespace ModuleTest.ViewModels
 
         public string Title
         {
-            get { return _title; }
-            set { _title = value; }
-        }           
+            get => _title;
+            set => SetProperty(ref _title, value);
+        }
     }
 }
