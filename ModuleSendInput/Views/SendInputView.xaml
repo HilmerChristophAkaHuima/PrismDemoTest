@@ -10,7 +10,8 @@
              prism:ViewModelLocator.AutoWireViewModel="True">
     <StackPanel>
         <TextBox Text="{Binding InputText, UpdateSourceTrigger=PropertyChanged}"
-                 HorizontalAlignment="Center" Width="100" Margin="10"/>
-        <Button Command="{Binding SendCommand}" HorizontalAlignment="Center" Width="50" Margin="10">Send</Button>
+                 Margin="10"/>
+        <Button Command="{Binding SendCommand}"
+                Margin="10">Send</Button>
     </StackPanel>
 </UserControl>
