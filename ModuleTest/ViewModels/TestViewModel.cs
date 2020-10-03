@@ -41,7 +41,7 @@ namespace ModuleTest.ViewModels
             ClickCount = 0;
         }
 
-        //Needed for ObservesProperty or RaisCanExecuteChanged
+        //Needed for ObservesProperty or RaiseCanExecuteChanged
         //private bool CanClick()
         //{
         //    return CanExecute;

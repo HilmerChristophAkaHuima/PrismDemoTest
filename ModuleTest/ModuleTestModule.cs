@@ -35,15 +35,15 @@ namespace ModuleTest
             IRegion region = _regionManager.Regions["SecondRegion"];
 
             var tabOne = containerProvider.Resolve<SecondView>();
-            (tabOne.DataContext as SecondViewModel).Title = "Tab 1.";
+            ((SecondViewModel) tabOne.DataContext).Title = "Tab 1.";
             region.Add(tabOne);
 
             var tabTwo = containerProvider.Resolve<SecondView>();
-            (tabTwo.DataContext as SecondViewModel).Title = "Tab 2.";
+            ((SecondViewModel) tabTwo.DataContext).Title = "Tab 2.";
             region.Add(tabTwo);
 
             var tabThree = containerProvider.Resolve<SecondView>();
-            (tabThree.DataContext as SecondViewModel).Title = "Tab 3.";
+            ((SecondViewModel) tabThree.DataContext).Title = "Tab 3.";
             region.Add(tabThree);
 
             //var thirdView = containerProvider.Resolve<TestView>();

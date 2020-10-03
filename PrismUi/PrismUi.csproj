@@ -9,6 +9,8 @@
     <PackageReference Include="Prism.DryIoc" Version="7.2.0.1422" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ModuleReceiveOutput\ModuleReceiveOutput.csproj" />
+    <ProjectReference Include="..\ModuleSendInput\ModuleSendInput.csproj" />
     <ProjectReference Include="..\ModuleTest\ModuleTest.csproj" />
     <ProjectReference Include="..\PrismUI.Core\PrismUI.Core.csproj" />
   </ItemGroup>

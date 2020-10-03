@@ -10,16 +10,33 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Button Content="Save All" Margin="10" Grid.Row="0" Command="{Binding ApplicationCommands.SaveAllCommand}"/>
-        <TabControl Grid.Row="1" Margin="10" prism:RegionManager.RegionName="SecondRegion"/>
+            <Button Content="Save All" Margin="10" Grid.Row="0" Command="{Binding ApplicationCommands.SaveAllCommand}"/>
+            <TabControl Grid.Row="1" Margin="10" prism:RegionManager.RegionName="SecondRegion"/>
 
 
-        <!--<ContentControl prism:RegionManager.RegionName="ContentRegion" Grid.Row="0"/>
-        <ContentControl prism:RegionManager.RegionName="SecondRegion" Grid.Row="1" />-->
+            <!--<ContentControl prism:RegionManager.RegionName="ContentRegion" Grid.Row="0"/>
+            <ContentControl prism:RegionManager.RegionName="SecondRegion" Grid.Row="1" />-->
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <ContentControl prism:RegionManager.RegionName="SendInputRegion" Grid.Row="0"/>
+            <ContentControl prism:RegionManager.RegionName="ReceivedOutputRegion" Grid.Row="1" />
+        </Grid>
     </Grid>
 </Window>

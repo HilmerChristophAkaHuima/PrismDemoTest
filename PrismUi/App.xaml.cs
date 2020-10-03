@@ -35,6 +35,8 @@ namespace PrismUi
         {
             base.ConfigureModuleCatalog(moduleCatalog);
             moduleCatalog.AddModule<ModuleTestModule>();
+            moduleCatalog.AddModule<ModuleReceiveOutput.ModuleReceiveOutput>();
+            moduleCatalog.AddModule<ModuleSendInput.ModuleSendInput>();
         }
     }
 }
