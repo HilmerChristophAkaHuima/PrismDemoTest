@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Regions;
 using PrismUI.Core.Commands;
 
 namespace ModuleTest.ViewModels
 {
-    public class SecondViewModel : BindableBase
+    public class SecondViewModel : BindableBase, INavigationAware
     {
         private string _title;
 
@@ -35,6 +36,14 @@ namespace ModuleTest.ViewModels
 
         public DelegateCommand UpdateCommand { get; private set; }
 
+        private int _pageViews;
+
+        public int PageViews
+        {
+            get => _pageViews;
+            set => SetProperty(ref _pageViews, value);
+        }
+
         public SecondViewModel(IApplicationCommands applicationCommands)
         {
             UpdateCommand = new DelegateCommand(Update).ObservesCanExecute(() => CanUpdate);
@@ -44,6 +53,21 @@ namespace ModuleTest.ViewModels
         private void Update()
         {
             UpdateText = $"Update Date: {DateTime.Now}";
+        }
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            PageViews++;
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            
         }
     }
 }

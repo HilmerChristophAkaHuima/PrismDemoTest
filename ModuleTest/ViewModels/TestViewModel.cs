@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Regions;
 
 namespace ModuleTest.ViewModels
 {
-    public class TestViewModel : BindableBase
+    public class TestViewModel : BindableBase, INavigationAware
     {
         private string _title = "Hello from TestViewModel";
 
@@ -27,6 +28,14 @@ namespace ModuleTest.ViewModels
 
                 //ClickMeCommand.RaiseCanExecuteChanged();
             }
+        }
+
+        private int _pageViews;
+
+        public int PageViews
+        {
+            get => _pageViews;
+            set => SetProperty(ref _pageViews, value);
         }
 
         public int ClickCount { get; private set; }
@@ -57,6 +66,20 @@ namespace ModuleTest.ViewModels
                 CanExecute = false;
             }
             
+        }
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            PageViews++;
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
         }
     }
 }
