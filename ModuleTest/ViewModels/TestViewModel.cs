@@ -38,6 +38,14 @@ namespace ModuleTest.ViewModels
             set => SetProperty(ref _pageViews, value);
         }
 
+        private string _navUri;
+
+        public string NavUri
+        {
+            get => _navUri;
+            set => SetProperty(ref _navUri, value);
+        }
+
         public int ClickCount { get; private set; }
 
         public DelegateCommand ClickMeCommand { get; set; }
@@ -71,6 +79,10 @@ namespace ModuleTest.ViewModels
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             PageViews++;
+            if (navigationContext.Parameters.ContainsKey("NavUri"))
+            {
+                NavUri = navigationContext.Parameters.GetValue<string>("NavUri");
+            }
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

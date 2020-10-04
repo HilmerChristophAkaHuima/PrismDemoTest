@@ -36,7 +36,9 @@ namespace PrismUi.ViewModels
 
         private void Navigate(string uri)
         {
-            _regionManager.RequestNavigate("NavContentRegion", uri);
+            var p = new NavigationParameters();
+            p.Add("NavUri", uri);
+            _regionManager.RequestNavigate("NavContentRegion", uri, p);
         }
     }
 }
