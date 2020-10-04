@@ -20,7 +20,7 @@ namespace ModuleReceiveOutput.ViewModels
 
         public ReceivedOutputListViewModel(IEventAggregator eventAggregator)
         {
-            eventAggregator.GetEvent<MessageSentEvent>().Subscribe(OnMessageReceived);
+            eventAggregator.GetEvent<MessageSentEvent>().Subscribe(OnMessageReceived, ThreadOption.PublisherThread, false, message => !message.Contains("fuck"));
         }
 
         private void OnMessageReceived(string message)
