@@ -1,10 +1,14 @@
-﻿using Prism.Mvvm;
+﻿using ModuleTest.Views;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Regions;
 using PrismUI.Core.Commands;
 
 namespace PrismUi.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
+        private readonly IRegionManager _regionManager;
         private string _title = "CEBP";
         public string Title
         {
@@ -20,9 +24,19 @@ namespace PrismUi.ViewModels
             set { SetProperty(ref _applicationCommands, value); }
         }
 
-        public MainWindowViewModel(IApplicationCommands applicationCommands)
+        public DelegateCommand<string> NavigateCommand { get; set; }
+
+        public MainWindowViewModel(IApplicationCommands applicationCommands, IRegionManager regionManager)
         {
+            _regionManager = regionManager;
+            _regionManager.RegisterViewWithRegion("NavContentRegion", typeof(TestView));
             ApplicationCommands = applicationCommands;
+            NavigateCommand = new DelegateCommand<string>(Navigate);
+        }
+
+        private void Navigate(string uri)
+        {
+            _regionManager.RequestNavigate("NavContentRegion", uri);
         }
     }
 }

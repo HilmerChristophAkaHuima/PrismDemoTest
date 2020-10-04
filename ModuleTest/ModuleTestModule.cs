@@ -26,6 +26,9 @@ namespace ModuleTest
         {
             ViewModelLocationProvider.Register<SecondView, SecondViewModel>();
             //ViewModelLocationProvider.Register<SecondView>(() => new SecondViewModel() {Text = "Hello from SecondFactory"});
+
+            containerRegistry.RegisterForNavigation<TestView>();
+            containerRegistry.RegisterForNavigation<SecondView>();
         }
 
         public void OnInitialized(IContainerProvider containerProvider)

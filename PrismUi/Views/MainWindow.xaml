@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="350" Width="800">
+        Title="{Binding Title}" Height="350" Width="Auto">
     <Window.Resources>
         <Style TargetType="TabItem">
             <Setter Property="Header" Value="{Binding DataContext.Title}" />
@@ -11,6 +11,7 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -23,10 +24,6 @@
 
             <Button Content="Save All" Margin="10" Grid.Row="0" Command="{Binding ApplicationCommands.SaveAllCommand}"/>
             <TabControl Grid.Row="1" Margin="10" prism:RegionManager.RegionName="SecondRegion"/>
-
-
-            <!--<ContentControl prism:RegionManager.RegionName="ContentRegion" Grid.Row="0"/>
-            <ContentControl prism:RegionManager.RegionName="SecondRegion" Grid.Row="1" />-->
         </Grid>
 
         <Grid Grid.Column="1">
@@ -37,6 +34,20 @@
 
             <ContentControl prism:RegionManager.RegionName="SendInputRegion" Grid.Row="0"/>
             <ContentControl prism:RegionManager.RegionName="ReceivedOutputRegion" Grid.Row="1" />
+        </Grid>
+
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+                <Button Command="{Binding NavigateCommand}" CommandParameter="TestView"
+                    Margin="5">TestView</Button>
+                <Button Command="{Binding NavigateCommand}" CommandParameter="SecondView"
+                        Margin="5">SecondView</Button>
+            </StackPanel>
+            <ContentControl Grid.Row="1" prism:RegionManager.RegionName="NavContentRegion"/>
         </Grid>
     </Grid>
 </Window>
