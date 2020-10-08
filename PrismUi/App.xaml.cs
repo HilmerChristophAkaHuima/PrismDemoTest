@@ -6,7 +6,9 @@ using Prism.Modularity;
 using Prism.Regions;
 using PrismUi.Core.Region;
 using ModuleTest;
+using Prism.Services.Dialogs;
 using PrismUI.Core.Commands;
+using PrismUI.Core.Services;
 
 namespace PrismUi
 {
@@ -23,6 +25,7 @@ namespace PrismUi
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
+            containerRegistry.Register<IOpenFileDialogService, OpenFileDialogService>();
         }
 
         protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)

@@ -3,12 +3,14 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 using PrismUI.Core.Commands;
+using PrismUI.Core.Services;
 
 namespace PrismUi.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
         private readonly IRegionManager _regionManager;
+        private readonly IOpenFileDialogService _openFileDialogService;
         private string _title = "CEBP";
         public string Title
         {
@@ -24,14 +26,32 @@ namespace PrismUi.ViewModels
             set { SetProperty(ref _applicationCommands, value); }
         }
 
+        private string _openFileDialogPath;
+
+        public string OpenFileDialogPath
+        {
+            get => _openFileDialogPath;
+            set => SetProperty(ref _openFileDialogPath, value);
+        }
+
         public DelegateCommand<string> NavigateCommand { get; set; }
 
-        public MainWindowViewModel(IApplicationCommands applicationCommands, IRegionManager regionManager)
+        public DelegateCommand OpenFileDialogCommand { get; set; }
+
+        public MainWindowViewModel(IApplicationCommands applicationCommands, IRegionManager regionManager, IOpenFileDialogService openFileDialogService)
         {
             _regionManager = regionManager;
+            _openFileDialogService = openFileDialogService;
             _regionManager.RegisterViewWithRegion("NavContentRegion", typeof(TestView));
             ApplicationCommands = applicationCommands;
             NavigateCommand = new DelegateCommand<string>(Navigate);
+            OpenFileDialogCommand = new DelegateCommand(OpenFileDialog);
+        }
+
+        private void OpenFileDialog()
+        {
+            _openFileDialogService.ShowDialog();
+            OpenFileDialogPath = _openFileDialogService.OpenFileDialog.FileName;
         }
 
         private void Navigate(string uri)
